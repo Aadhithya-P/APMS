@@ -1,60 +1,67 @@
-NestHub - Apartment Management System
+# NestHub - Apartment Management System
 
-1) Overview
+## Overview
 
 The Apartment Management System (APMS) is a full-stack MERN application that I developed to simplify the day-to-day management of apartment communities. The system provides separate interfaces for administrators and residents, allowing them to manage complaints, visitors, notices, and apartment-related information through a secure, role-based platform.
 
-2) Features
+---
 
-  (i) Authentication
-  * Secure user authentication using JWT
-  * Role-based access control for Admin and Resident users
-  * Protected API routes
+## Features
 
-  (ii) Admin
-  * Manage residents and apartment flats
-  * View and update complaint status
-  * Create and manage notices
-  * View visitor records
-  * Access dashboard statistics
+### Authentication
+- Secure user authentication using JWT
+- Role-based access control for Admin and Resident users
+- Protected API routes
 
-  (iii) Resident
-  * Register complaints
-  * Track complaint status
-  * View apartment notices
-  * View visitor information
-  * Access a personalized dashboard
+### Admin
+- Manage residents and apartment flats
+- View and update complaint status
+- Create and manage notices
+- View visitor records
+- Access dashboard statistics
 
-  (iv) Maintenance
-  * Register and manage maintenance requests
-  * Track the status of maintenance issues
-  * Maintain apartment-related service records
+### Resident
+- Register complaints
+- Track complaint status
+- View apartment notices
+- View visitor information
+- Access a personalized dashboard
 
-  (v) Security
-  * Secure login with JWT authentication
-  * Protected routes and role-based authorization
-  * Visitor record management for improved apartment security
+### Maintenance
+- Register and manage maintenance requests
+- Track the status of maintenance issues
+- Maintain apartment-related service records
 
-3) Technology Stack
+### Security
+- Secure login with JWT authentication
+- Protected routes and role-based authorization
+- Visitor record management for improved apartment security
 
-  (i) Frontend
-  * React.js
-  * React Router
-  * Context API
-  * Axios
-  
-  (ii) Backend
-  * Node.js
-  * Express.js
-  * REST APIs
-  * JWT Authentication
-  
-  (iii) Database
-  * MongoDB
-  * Mongoose
+---
 
-4) Project Structure
+## Technology Stack
 
+### Frontend
+- React.js
+- React Router
+- Context API
+- Axios
+
+### Backend
+- Node.js
+- Express.js
+- REST APIs
+- JWT Authentication
+
+### Database
+- MongoDB
+- Mongoose
+
+---
+
+## Project Structure
+
+```text
 APMS/
 │
 ├── backend/
@@ -71,75 +78,106 @@ APMS/
 │   └── package.json
 │
 └── README.md
+```
 
+---
 
-5) Installation
+## Installation
 
-  (i) Clone the repository
-    git clone https://github.com/<your-github-username>/Apartment-Management-System.git
+### 1. Clone the repository
 
+```bash
+git clone https://github.com/<your-github-username>/Apartment-Management-System.git
+```
 
-  (ii) Install backend dependencies
-    cd backend
-    npm install
+### 2. Install backend dependencies
 
+```bash
+cd backend
+npm install
+```
 
-  (iii) Install frontend dependencies
-    cd ../frontend
-    npm install
+### 3. Install frontend dependencies
 
+```bash
+cd ../frontend
+npm install
+```
 
-  (iv) Environment Variables
-    Create a 'config.env' file inside the 'backend/config' directory and configure the following variables:
-    PORT=
-    MONGO_URI=
-    JWT_SECRET=
+### 4. Configure environment variables
 
-  (v) Run the backend
-    cd backend
-    npm start
+Create a `config.env` file inside the `backend/config` directory.
 
+```env
+PORT=
+MONGO_URI=
+JWT_SECRET=
+```
 
-  (vi) Run the frontend
-    cd frontend
-    npm run dev
+### 5. Run the backend
 
-6) Screenshots
+```bash
+cd backend
+npm start
+```
 
-Add screenshots of the following pages:
+### 6. Run the frontend
 
-* Login Page
-  ![Login Page](screenshots/login.png)
-* Admin Dashboard
-  ![Admin Dashboard](screenshots/admin-dashboard.png)
-* Resident Dashboard
-  ![Resident Dashboard](screenshots/resident-dashboard.png)
-* Security Dashboard
-  ![Security Dashboard](screenshots/security-dashboard.png)
-* Maintenance Dashboard
-  ![Maintenance Dashboard](screenshots/maintenance-dashboard.png)
+```bash
+cd frontend
+npm run dev
+```
 
-7) Future Improvements
+---
 
-Some features that can be added in future versions include:
+## Screenshots
 
-* Online maintenance payment integration
-* Email notifications
-* Push notifications
-* Document upload support
-* Mobile responsiveness improvements
-* Analytics dashboard
+### Login Page
 
-8) What I Learned
+![Login Page](screenshots/login.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+### Resident Dashboard
+
+![Resident Dashboard](screenshots/resident-dashboard.png)
+
+### Security Dashboard
+
+![Security Dashboard](screenshots/security-dashboard.png)
+
+### Maintenance Dashboard
+
+![Maintenance Dashboard](screenshots/maintenance-dashboard.png)
+
+---
+
+## Future Improvements
+
+- Online maintenance payment integration
+- Email notifications
+- Push notifications
+- Document upload support
+- Mobile responsiveness improvements
+- Analytics dashboard
+
+---
+
+## What I Learned
 
 Through this project, I gained practical experience in:
 
-* Building REST APIs using Express.js
-* Developing frontend applications with React
-* Implementing JWT-based authentication and authorization
-* Designing MongoDB databases with Mongoose
-* Managing application state and routing
-* Building a complete full-stack MERN application
+- Building REST APIs using Express.js
+- Developing frontend applications with React
+- Implementing JWT-based authentication and authorization
+- Designing MongoDB databases with Mongoose
+- Managing application state and routing
+- Building a complete full-stack MERN application
 
-Author
-Aadhithya Pattabiraman
+---
+
+## Author
+
+**Aadhithya Pattabiraman**
