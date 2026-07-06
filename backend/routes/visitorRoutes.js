@@ -6,6 +6,7 @@ const {
   getAllVisitors,
   checkInVisitor,
   checkOutVisitor,
+  approveRejectVisitor,
   deleteVisitor,
 } = require("../controllers/visitorController");
 
@@ -26,6 +27,13 @@ router.get(
   protect,
   authorize("resident"),
   getMyVisitors
+);
+
+router.put(
+  "/:id/respond",
+  protect,
+  authorize("resident"),
+  approveRejectVisitor
 );
 
 router.get(

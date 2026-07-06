@@ -7,6 +7,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 
+
 function Visitors() {
   const [visitors, setVisitors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,6 +34,7 @@ function Visitors() {
   useEffect(() => {
     fetchVisitors();
   }, []);
+
 
   const fetchVisitors = async () => {
     try {
@@ -135,6 +137,32 @@ function Visitors() {
         "Check-out failed"
       );
     }
+  };
+
+  const respondVisitor = async (id, status) => {
+
+    try {
+
+      await API.put(
+        `/visitors/${id}/respond`,
+        { status }
+      );
+
+      toast.success(
+        `Visitor ${status.toLowerCase()} successfully`
+      );
+
+      fetchVisitors();
+
+    } catch (error) {
+
+      toast.error(
+        error.response?.data?.message ||
+        "Operation failed"
+      );
+
+    }
+
   };
 
   const deleteVisitor = async (id) => {
@@ -469,6 +497,37 @@ function Visitors() {
                 </td>
 
                 <td>
+
+                  {role === "resident" &&
+                  visitor.status === "Pending" && (
+
+                    <>
+                      <button
+                        className="btn btn-success btn-sm me-2"
+                        onClick={() =>
+                          respondVisitor(
+                            visitor._id,
+                            "Approved"
+                          )
+                        }
+                      >
+                        Approve
+                      </button>
+
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() =>
+                          respondVisitor(
+                            visitor._id,
+                            "Rejected"
+                          )
+                        }
+                      >
+                        Reject
+                      </button>
+                    </>
+
+                  )}
 
                   {role === "security" &&
                   visitor.status === "Approved" && (

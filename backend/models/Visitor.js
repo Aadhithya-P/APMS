@@ -39,7 +39,9 @@ const visitorSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: [
+        "Pending",
         "Approved",
+        "Rejected",
         "Checked In",
         "Checked Out",
       ],

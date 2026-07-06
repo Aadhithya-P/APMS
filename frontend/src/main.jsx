@@ -5,6 +5,9 @@ import "./index.css";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  NotificationProvider,
+} from "./context/NotificationContext";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,8 +18,10 @@ ReactDOM.createRoot(
 ).render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
-      <ToastContainer />
+      <NotificationProvider>
+        <App />
+        <ToastContainer />
+      </NotificationProvider>
     </AuthProvider>
   </React.StrictMode>
 );
