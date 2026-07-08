@@ -1,4 +1,8 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+
+const resend = new Resend(
+  process.env.RESEND_API_KEY
+);
 
 const sendEmail = async ({
   email,
@@ -6,27 +10,14 @@ const sendEmail = async ({
   message,
 }) => {
 
-  const transporter = nodemailer.createTransport({
+  await resend.emails.send({
 
-    service: "gmail",
-
-    auth: {
-
-      user: process.env.EMAIL_USER,
-
-      pass: process.env.EMAIL_PASS,
-
-    },
-
-  });
-
-  await transporter.sendMail({
-
-    from: `"Apartment Management System" <${process.env.EMAIL_USER}>`,
+    from: "NestHub <onboarding@resend.dev>",
 
     to: email,
 
     subject,
+
     html: message,
 
   });
