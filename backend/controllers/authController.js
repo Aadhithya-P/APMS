@@ -237,12 +237,14 @@ const deleteUser = async (req, res) => {
 
 const forgotPassword = async (req, res) => {
 
+  let user;
+
   try {
 
     const { email } = req.body;
 
     // Find user
-    const user = await User.findOne({ email });
+    user = await User.findOne({ email });
 
     if (!user) {
 
@@ -434,22 +436,20 @@ const forgotPassword = async (req, res) => {
 
     console.error(error);
 
-    let message = "Something went wrong";
+    // Remove token if email sending fails
+    if (user) {
 
-    if (
-      error.message.includes("Connection timeout") ||
-      error.message.includes("ETIMEDOUT") ||
-      error.message.includes("ENETUNREACH")
-    ) {
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpire = undefined;
 
-      message =
-        "Email service is temporarily unavailable. Please try again in a few minutes.";
-
-    } else {
-
-      message = error.message;
+      await user.save({
+        validateBeforeSave: false,
+      });
 
     }
+
+    let message =
+      "Unable to send reset email. Please try again later.";
 
     res.status(500).json({
       success: false,

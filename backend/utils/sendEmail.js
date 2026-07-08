@@ -1,4 +1,8 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+
+const resend = new Resend(
+  process.env.RESEND_API_KEY
+);
 
 const sendEmail = async ({
   email,
@@ -6,35 +10,32 @@ const sendEmail = async ({
   message,
 }) => {
 
-  const transporter = nodemailer.createTransport({
+  const { data, error } =
+    await resend.emails.send({
 
-    service: "gmail",
+      from:
+        "NestHub <onboarding@resend.dev>",
 
-    auth: {
+      to: email,
 
-      user: process.env.EMAIL_USER,
+      subject,
 
-      pass: process.env.EMAIL_PASS,
+      html: message,
 
-    },
+    });
 
-  });
+  if (error) {
 
-  await transporter.verify();
+    console.error(error);
 
-  console.log("SMTP Server Ready");
+    throw new Error(error.message);
 
-  await transporter.sendMail({
+  }
 
-    from: `"NestHub" <${process.env.EMAIL_USER}>`,
-
-    to: email,
-
-    subject,
-
-    html: message,
-
-  });
+  console.log(
+    "Email sent successfully:",
+    data
+  );
 
 };
 
