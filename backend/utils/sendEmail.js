@@ -14,6 +14,8 @@ const sendEmail = async ({
 
     secure: false,
 
+    family: 4,
+
     auth: {
 
       user: process.env.EMAIL_USER,
