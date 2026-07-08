@@ -1,6 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
 import Login from "../pages/auth/Login";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import ResetPassword from "../pages/auth/ResetPassword";
+
 import Dashboard from "../pages/dashboard/Dashboard";
 
 import ProtectedRoute from "../components/ProtectedRoute";
@@ -20,6 +23,16 @@ function AppRoutes() {
       <Route
         path="/"
         element={<Login />}
+      />
+
+      <Route
+        path="/forgot-password"
+        element={<ForgotPassword />}
+      />
+
+      <Route
+        path="/reset-password/:resetToken"
+        element={<ResetPassword />}
       />
 
       <Route

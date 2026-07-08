@@ -1,7 +1,10 @@
 import { useState } from "react";
 import API from "../../api/axios";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import {
+  useNavigate,
+  Link,
+} from "react-router-dom";
 import { toast } from "react-toastify";
 
 function Login() {
@@ -172,18 +175,12 @@ function Login() {
 
               <div className="text-end mb-3">
 
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-
-                    toast.info(
-                      "Forgot Password coming soon"
-                    );
-                  }}
+                <Link
+                  to="/forgot-password"
+                  className="text-decoration-none"
                 >
                   Forgot Password?
-                </a>
+                </Link>
 
               </div>
 
