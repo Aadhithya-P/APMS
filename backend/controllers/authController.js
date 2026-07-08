@@ -432,12 +432,28 @@ const forgotPassword = async (req, res) => {
 
   } catch (error) {
 
+    console.error(error);
+
+    let message = "Something went wrong";
+
+    if (
+      error.message.includes("Connection timeout") ||
+      error.message.includes("ETIMEDOUT") ||
+      error.message.includes("ENETUNREACH")
+    ) {
+
+      message =
+        "Email service is temporarily unavailable. Please try again in a few minutes.";
+
+    } else {
+
+      message = error.message;
+
+    }
+
     res.status(500).json({
-
       success: false,
-
-      message: error.message,
-
+      message,
     });
 
   }
